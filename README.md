@@ -5,6 +5,9 @@ Este es un proyecto abierto que tiene por propósito la creación de un plugin p
 2. Dentro vas a la sección llamada "Antes de cerrar BODY" y allí copias y pegas el código fuente.  
 ```html
     <!-- disable-printscreen -->
+    <style>
+        /* Todo el contenido del archivo watermark.css */
+    </style>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script>
         // Todo el contenido del archivo disablePrintScreen.js

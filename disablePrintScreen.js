@@ -1,18 +1,18 @@
-/** PARA MANEJO DE ALERTAS **/
-function lockoutAlert(icon_alert, title_alert, text_alert) {
-    Swal.fire({
-        icon: icon_alert,
-        title: title_alert,
-        text: text_alert,
-        backdrop: true,
-        allowOutsideClick: false,
-        allowEscapeKey: false
-    });
-}
-
 var urlExam = window.location.href;
 // Activa bloqueos si la URL esta asociada a cualquier apartado de cuestionarios en moodle
 if (urlExam.match('mod/quiz')) {
+
+    /** Para el manejo de alertas **/
+    function lockoutAlert(icon_alert, title_alert, text_alert) {
+        Swal.fire({
+            icon: icon_alert,
+            title: title_alert,
+            text: text_alert,
+            backdrop: true,
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
 
     /** Personzaliza consola ante acceso de herramientas del desarrollador (F12) **/
     console.error('%cStop!', 'color: red;font-size:2.5rem;font-weight:bold;');  
@@ -64,4 +64,11 @@ if (urlExam.match('mod/quiz')) {
             cancelEvent();
         }
     });
+
+    // Vincula el nombre del usuario como marca de agua
+    var questions = document.getElementsByClassName('formulation');
+    var my_happy_user = document.getElementsByClassName("usertext")[0].textContent;
+    for (let i = 0; i < questions.length; i++) {
+        questions[i].setAttribute('data-value', my_happy_user);
+    }
 }

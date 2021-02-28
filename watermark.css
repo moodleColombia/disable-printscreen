@@ -1,6 +1,6 @@
 .formulation:after {
     color: rgba(52, 166, 214, 0.4);
-    content: "Diego Javier Mena";
+    content: attr(data-value);
     font-size: 4em;
     z-index: 1;
     display: flex;
