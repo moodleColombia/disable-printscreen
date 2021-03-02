@@ -23,13 +23,6 @@ if (urlExam.match('mod/quiz')) {
         return false;
     };
 
-    /** Para asegurarse de cancelar eventos **/
-    function cancelEvent() {
-        e.cancelBubble = true;
-        e.preventDefault();
-        e.stopImmediatePropagation();
-    }
-
     /** Evento a escucha de tecla suelta **/
     document.addEventListener('keyup', (e) => {
         if (e.key == 'PrintScreen') { // Deshabilita captura de pantalla --> Tecla (imp pnt)
@@ -42,7 +35,7 @@ if (urlExam.match('mod/quiz')) {
     document.addEventListener('keydown', (e) => {
         if (e.ctrlKey && e.key == 'p' || e.ctrlKey && e.key == 'P') { // Bloqueo de impresiones --> Comando Ctrl+P
             lockoutAlert('error', 'Esta sección no se permite imprimir o exportar en PDF', 'Solicitamos no intentarlo de nuevo o su acceso será interrumpido y reportado');
-            cancelEvent();
+            e.preventDefault();
         } else if (e.metaKey && e.shiftKey) { // Se sobrepone pantalla ante recorte del Sistema Operativo Windows --> Comando Windows+Shift+S
             Swal.fire({
                 icon: 'warning',
@@ -55,13 +48,13 @@ if (urlExam.match('mod/quiz')) {
             });
         } else if (e.ctrlKey && e.key == 'c' || e.ctrlKey && e.key == 'C') { // Bloqueo de copiado --> Comando Ctrl+C
             lockoutAlert('error', 'Esta sección no se permite copiar', 'Solicitamos no intentarlo de nuevo o su acceso será interrumpido y reportado');
-            cancelEvent();
+            e.preventDefault();
         } else if (e.ctrlKey && e.key == 'x' || e.ctrlKey && e.key == 'X') { // Bloqueo de cortado --> Comando Ctrl+X
             lockoutAlert('error', 'Esta sección no se permite cortar', 'Solicitamos no intentarlo de nuevo o su acceso será interrumpido y reportado');
-            cancelEvent();
+            e.preventDefault();
         } else if (e.ctrlKey && e.key == 'v' || e.ctrlKey && e.key == 'V') { // Bloqueo de pegado --> Comando Ctrl+V
             lockoutAlert('error', 'En esta sección no se permite pegar información', 'Solicitamos no intentarlo de nuevo o su acceso será interrumpido y reportado');
-            cancelEvent();
+            e.preventDefault();
         }
     });
 
