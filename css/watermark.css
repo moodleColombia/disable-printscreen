@@ -10,10 +10,29 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    height: auto !important;
+    visibility: visible !important;
+    -webkit-pointer-events: none;
+    -moz-pointer-events: none;
+    -ms-pointer-events: none;
+    -o-pointer-events: none;
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    margin: -6% 0 0 0;
+}
+
+.formulation::before {
+    content: url(https://datateca.unad.edu.co/contenidos/publicaciones/Comunicaciones_VIMEP/2021/disable-printscreen/img/logo-unad.png);
+    opacity: 0.2;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
     height: auto !important;
     visibility: visible !important;
     -webkit-pointer-events: none;
@@ -28,26 +47,14 @@
     user-select: none;
 }
 
-.formulation::before {
-    content: url(../img/logo.jpg);
-    opacity: 0.2;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    height: auto !important;
-    visibility: visible !important;
-    -webkit-pointer-events: none;
-    -moz-pointer-events: none;
-    -ms-pointer-events: none;
-    -o-pointer-events: none;
-    pointer-events: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -o-user-select: none;
-    user-select: none;
+@media screen and (max-width:1440px) {
+    .formulation::after {
+        font-size: 3.5em;
+    }
+}
+
+@media screen and (max-width:1024px) {
+    .formulation::after {
+        font-size: 2.5em;
+    }
 }
