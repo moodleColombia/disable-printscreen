@@ -2,6 +2,13 @@ var urlExam = window.location.href;
 // Activa bloqueos si la URL esta asociada a cualquier apartado de cuestionarios en moodle
 if (urlExam.match('mod/quiz')) {
 
+    // Vincula el nombre del usuario como marca de agua
+    var questions = document.getElementsByClassName('formulation');
+    var my_happy_user = document.getElementsByClassName("usertext")[0].textContent;
+    for (let i = 0; i < questions.length; i++) {
+        questions[i].setAttribute('data-value', my_happy_user);
+    }
+
     /** Para el manejo de alertas **/
     function lockoutAlert(icon_alert, title_alert, text_alert) {
         Swal.fire({
@@ -31,8 +38,8 @@ if (urlExam.match('mod/quiz')) {
         }
     });
 
-    /** Evento a escucha de tecla undida **/
-    document.addEventListener('keydown', (e) => {
+    /** Opciones para deshabilitar intercambio de datos **/
+    function optionsToDisable(e) {
         if (e.ctrlKey && e.key == 'p' || e.ctrlKey && e.key == 'P') { // Bloqueo de impresiones --> Comando Ctrl+P
             lockoutAlert('error', 'Esta sección no se permite imprimir o exportar en PDF', 'Solicitamos no intentarlo de nuevo o su acceso será interrumpido y reportado');
             e.preventDefault();
@@ -56,12 +63,19 @@ if (urlExam.match('mod/quiz')) {
             lockoutAlert('error', 'En esta sección no se permite pegar información', 'Solicitamos no intentarlo de nuevo o su acceso será interrumpido y reportado');
             e.preventDefault();
         }
-    });
-
-    // Vincula el nombre del usuario como marca de agua
-    var questions = document.getElementsByClassName('formulation');
-    var my_happy_user = document.getElementsByClassName("usertext")[0].textContent;
-    for (let i = 0; i < questions.length; i++) {
-        questions[i].setAttribute('data-value', my_happy_user);
     }
+
+    /** Evento a escucha de tecla undida **/
+    document.addEventListener('keydown', (e) => { optionsToDisable(e) });
+    /** Ajuste para bloqueos sobre el editor tinyMCE **/
+    window.onload = function() {
+        setTimeout(function() {
+            var iframeContent = document.getElementsByClassName('mceIframeContainer');
+            for (let index = 0; index < iframeContent.length; index++) {
+                iframeContent[index].children[0].contentWindow.document.addEventListener('keydown', (e) => { optionsToDisable(e) });
+            }
+        }, 3000);
+    }
+
+
 }
