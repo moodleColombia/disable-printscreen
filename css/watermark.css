@@ -22,11 +22,11 @@
     -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
-    margin: -6% 0 0 0;
+    margin: -6% 0 0 9%;
 }
 
 .formulation::before {
-    content: url(https://datateca.unad.edu.co/contenidos/publicaciones/Comunicaciones_VIMEP/2021/disable-printscreen/img/logo-unad.png);
+    content: url(https://classrooms.unad.us/season2021/pluginfile.php/1/theme_lambda/logo/1613404915/logo.png);
     opacity: 0.2;
     z-index: 1;
     display: flex;
@@ -35,6 +35,8 @@
     position: absolute;
     height: auto !important;
     visibility: visible !important;
+    left: 55%;
+    padding-top: 5%;
     -webkit-pointer-events: none;
     -moz-pointer-events: none;
     -ms-pointer-events: none;
@@ -51,10 +53,50 @@
     .formulation::after {
         font-size: 3.5em;
     }
+    .formulation::before {
+        left: 50%;
+    }
+}
+
+@media screen and (max-width:1366px) {
+    .formulation::before {
+        left: 48%;
+    }
 }
 
 @media screen and (max-width:1024px) {
     .formulation::after {
         font-size: 2.5em;
+        margin: -6% 0 0 7%;
+    }
+    .formulation::before {
+        left: 44%;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .formulation::after {
+        font-size: 2em;
+        margin: -6% 0 0 3%;
+    }
+}
+
+@media screen and (max-width:425px) {
+    .formulation::before {
+        left: 20%;
+    }
+    .formulation::after {
+        font-size: 2em;
+        margin: -10% 0 0 20%;
+    }
+}
+
+@media screen and (max-width:320px) {
+    .formulation::before {
+        left: 5%;
+    }
+    .formulation::after {
+        font-size: 2em;
+        margin: -10% 0 0 12%;
     }
 }
