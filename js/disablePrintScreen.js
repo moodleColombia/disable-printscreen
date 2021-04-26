@@ -67,15 +67,17 @@ if (urlExam.match('mod/quiz')) {
 
     /** Evento a escucha de tecla undida **/
     document.addEventListener('keydown', (e) => { optionsToDisable(e) });
+
+
     /** Ajuste para bloqueos sobre el editor tinyMCE **/
-    window.onload = function() {
+    window.addEventListener('load', function() {
         setTimeout(function() {
             var iframeContent = document.getElementsByClassName('mceIframeContainer');
             for (let index = 0; index < iframeContent.length; index++) {
                 iframeContent[index].children[0].contentWindow.document.addEventListener('keydown', (e) => { optionsToDisable(e) });
             }
         }, 3000);
-    }
+    });
 
 
 }
